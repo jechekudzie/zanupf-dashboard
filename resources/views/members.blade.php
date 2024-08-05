@@ -312,8 +312,8 @@
                                     <a href="{{ url('members') }}">Manage Members</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('membership') }}">Member Directory</a>
-                                </li>
+                                    <a href="{{ url('membership') }}">Break Down</a>
+                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>
@@ -413,6 +413,7 @@
     <!-- ============================================================== -->
 
     <div class="content-page">
+
         <div class="content">
 
             <!-- Start Content-->
@@ -420,13 +421,13 @@
 
                 <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                     <div class="flex-grow-1">
-                        <h4 class="fs-18 fw-semibold m-0">Data Tables</h4>
+                        <h4 class="fs-18 fw-semibold m-0">Member Information</h4>
                     </div>
 
                     <div class="text-end">
                         <ol class="breadcrumb m-0 py-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Data Tables</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Members</a></li>
+                            <li class="breadcrumb-item active">Member Details</li>
                         </ol>
                     </div>
                 </div>
@@ -436,7 +437,7 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Basic Datatable</h5>
+                                <h5 class="card-title mb-0">Basic Data</h5>
                             </div><!-- end card header -->
 
                             <div class="container">

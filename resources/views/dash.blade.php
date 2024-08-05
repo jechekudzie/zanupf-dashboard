@@ -288,8 +288,8 @@
                                     <a href="{{ url('members') }}">Manage Members</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('membership') }}">Member Directory</a>
-                                </li>
+                                    <a href="{{ url('membership') }}">Break Down</a>
+                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>

@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<meta charset="utf-8"/>
+<title>Polling Stations</title>
+<meta name="author" content="Leading Digital"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-    <meta charset="utf-8"/>
-    <title>ZANU PF Membership Management Information System</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="c."/>
-    <meta name="author" content="Leading Digital"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+<!-- App css -->
+<link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
 
-    <!-- Datatables css -->
-    <link href="assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="assets/libs/datatables.net-keytable-bs5/css/keyTable.bootstrap5.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css"/>
+<!-- Icons -->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- App css -->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<!-- ApexCharts CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.css">
+<!-- Custom CSS -->
+<style>
+    body {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
 
-    <!-- Icons -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+    #map {
+        height: 80vh;
+        width: 100%;
+    }
 
+    .chart-container {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+</style>
 </head>
 
 <!-- body start -->
@@ -35,7 +46,6 @@
 
 <!-- Begin page -->
 <div id="app-layout">
-
 
     <!-- Topbar Start -->
     <div class="topbar-custom">
@@ -272,6 +282,7 @@
                     </a>
                 </div>
 
+
                 <ul id="side-menu">
 
                     <li class="menu-title">Dashboard</li>
@@ -298,7 +309,8 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('membership') }}">Break Down</a>
-                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
+                                </li>
+                                <li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>
@@ -386,105 +398,62 @@
 
             </div>
             <!-- End Sidebar -->
-
             <div class="clearfix"></div>
 
         </div>
     </div>
     <!-- Left Sidebar End -->
 
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
-
     <div class="content-page">
         <div class="content">
-
             <!-- Start Content-->
             <div class="container-xxl">
 
+
                 <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                     <div class="flex-grow-1">
-                        <h4 class="fs-18 fw-semibold m-0">Data Tables</h4>
-                    </div>
-
-                    <div class="text-end">
-                        <ol class="breadcrumb m-0 py-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Data Tables</li>
-                        </ol>
+                        <h4 class="fs-18 fw-semibold m-0">Polling Station Break Down</h4>
                     </div>
                 </div>
 
-                <div class="container py-5">
-                    <div class="row">
-                        <!-- Example of store items using cards -->
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Regalia Item">
-                                <div class="card-body">
-                                    <h5 class="card-title">Party T-Shirt</h5>
-                                    <p class="card-text">High-quality cotton t-shirt with party logo.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary">$19.99</span>
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Regalia Item">
-                                <div class="card-body">
-                                    <h5 class="card-title">Party Cap</h5>
-                                    <p class="card-text">Adjustable cap with embroidered party emblem.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary">$14.99</span>
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Regalia Item">
-                                <div class="card-body">
-                                    <h5 class="card-title">Party Flag</h5>
-                                    <p class="card-text">Durable flag for outdoor and indoor use.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary">$9.99</span>
-                                        <button class="btn btn-primary">Add to Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div> <!-- container-fluid -->
-
-        </div> <!-- content -->
-
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
                 <div class="row">
-                    <div class="col fs-13 text-muted text-center">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>
-                        - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Leading Digital</a>
+                    <div class="col-md-12 col-xl-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
+                                        <i data-feather="git-commit" class="widgets-icons"></i>
+                                    </div>
+                                    <h5 class="card-title mb-0">Polling Stations</h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xl-5">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
+                                        <i data-feather="git-commit" class="widgets-icons"></i>
+                                    </div>
+                                    <h5 class="card-title mb-0">Members</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart-container" id="chart"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- end Footer -->
-
+        </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
+
 </div>
 <!-- END wrapper -->
 
@@ -496,70 +465,139 @@
 <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
 <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 <script src="assets/libs/feather-icons/feather.min.js"></script>
-
-<!-- Datatables js -->
-<script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-
-<!-- dataTables.bootstrap5 -->
-<script src="assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-
-<!-- buttons.colVis -->
-<script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-<script src="assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-
-<!-- buttons.bootstrap5 -->
-<script src="assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-
-<!-- dataTables.keyTable -->
-<script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="assets/libs/datatables.net-keytable-bs5/js/keyTable.bootstrap5.min.js"></script>
-
-<!-- dataTable.responsive -->
-<script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-
-<!-- dataTables.select -->
-<script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
-<script src="assets/libs/datatables.net-select-bs5/js/select.bootstrap5.min.js"></script>
-
-<!-- Datatable Demo App Js -->
-<script src="assets/js/pages/datatable.init.js"></script>
-
 <!-- App js-->
 <script src="assets/js/app.js"></script>
 
-<!-- Calendar Script (FullCalendar.io) -->
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet'/>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+<!-- ApexCharts JS -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+<!-- Feather Icons JS -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- ApexCharts JS -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+<!-- Custom JS -->
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- ApexCharts JS -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+<!-- Custom JS -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const calendarEl = document.getElementById('calendar');
-        const calendar = $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            events: [
-                {
-                    title: 'Community Meeting',
-                    start: new Date().setDate(new Date().getDate() + 1), // tomorrow
-                    allDay: true
-                },
-                {
-                    title: 'Fundraising Event',
-                    start: new Date().setDate(new Date().getDate() + 7), // next week
-                    allDay: true
-                }
-            ]
+    // Example data for 100 polling stations within Zimbabwe's bounds
+    const pollingData = [];
+    const zimbabweBounds = {
+        latMin: -22.0,
+        latMax: -15.0,
+        lngMin: 25.0,
+        lngMax: 34.0
+    };
+
+    for (let i = 1; i <= 10; i++) {
+        pollingData.push({
+            "station_name": `Station ${i}`,
+            "latitude": Math.random() * (zimbabweBounds.latMax - zimbabweBounds.latMin) + zimbabweBounds.latMin,
+            "longitude": Math.random() * (zimbabweBounds.lngMax - zimbabweBounds.lngMin) + zimbabweBounds.lngMin,
+            "main_wing": Math.floor(Math.random() * 1000),
+            "youth_league": Math.floor(Math.random() * 1000),
+            "womens_league": Math.floor(Math.random() * 1000),
+            "war_veterans_league": Math.floor(Math.random() * 1000)
+        });
+    }
+
+    // Initialize Leaflet map
+    const map = L.map('map').setView([-19.015438, 29.154857], 6); // Centered on Zimbabwe
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add polling stations to map
+    pollingData.forEach(station => {
+        const marker = L.marker([station.latitude, station.longitude]).addTo(map)
+            .bindPopup(`
+            <strong>${station.station_name}</strong><br>
+            Main Wing: ${station.main_wing}<br>
+            Youth League: ${station.youth_league}<br>
+            Women's League: ${station.womens_league}<br>
+            War Veterans League: ${station.war_veterans_league}
+        `);
+
+        marker.on('click', function () {
+            showChart(station);
         });
     });
+
+    // Function to show chart for a selected polling station
+    function showChart(station) {
+        const options = {
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            series: [
+                {
+                    name: 'Main Wing',
+                    data: [station.main_wing],
+                    color: 'rgba(255, 0, 0, 1)'
+                },
+                {
+                    name: 'Youth League',
+                    data: [station.youth_league],
+                    color: 'rgba(0, 0, 0, 1)'
+                },
+                {
+                    name: 'Women\'s League',
+                    data: [station.womens_league],
+                    color: 'rgba(0, 128, 0, 1)'
+                },
+                {
+                    name: 'War Veterans League',
+                    data: [station.war_veterans_league],
+                    color: 'rgba(255, 255, 0, 1)'
+                }
+            ],
+            xaxis: {
+                categories: ['Voters']
+            },
+            title: {
+                text: `Voter Distribution at ${station.station_name}`,
+                align: 'center'
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'center',
+                floating: false,
+                offsetY: 10,
+                offsetX: 10
+            },
+        };
+
+        const chartContainer = document.querySelector("#chart");
+        chartContainer.innerHTML = ""; // Clear existing chart
+
+        window.chart = new ApexCharts(chartContainer, options);
+        window.chart.render();
+    }
+
+    // Show chart for the first station initially
+    if (pollingData.length > 0) {
+        showChart(pollingData[0]);
+    }
+
 </script>
-
-
 </body>
 </html>

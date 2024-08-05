@@ -274,7 +274,7 @@
                                             <a href="{{ url('members') }}">Manage Members</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('membership') }}">Member Directory</a>
+                                            <a href="{{ url('membership') }}">Break Down</a>
                                         </li>
                                     </ul>
                                 </div>

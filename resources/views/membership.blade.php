@@ -299,8 +299,8 @@
                                     <a href="{{ url('members') }}">Manage Members</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('membership') }}">Member Directory</a>
-                                </li>
+                                    <a href="{{ url('membership') }}">Break Down</a>
+                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>
@@ -403,7 +403,7 @@
 
                 <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                     <div class="flex-grow-1">
-                        <h4 class="fs-18 fw-semibold m-0">Membership Break Down</h4>
+                        <h4 class="fs-18 fw-semibold m-0">Break Down</h4>
                     </div>
                 </div>
 
@@ -425,7 +425,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!-- Subscription Trends Card -->
                     <div class="col-md-12 col-xl-6">
@@ -461,6 +460,21 @@
                         </div>
                     </div>
 
+                    <div class="col-md-12 col-xl-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
+                                        <i data-feather="check-square" class="widgets-icons"></i>
+                                    </div>
+                                    <h5 class="card-title mb-0">Election Participation</h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="chart-election" class="apex-charts"></div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -548,6 +562,26 @@
         };
         var chartAttendance = new ApexCharts(document.querySelector("#chart-attendance"), optionsAttendance);
         chartAttendance.render();
+
+        // Election Participation Chart
+        var optionsElection = {
+            chart: {
+                type: 'bar',
+            },
+            series: [{
+                name: 'Voter Turnout',
+                data: [75, 80, 85, 90, 70, 95, 85, 88, 92] // Example data
+            }],
+            xaxis: {
+                categories: ['Harare', 'Bulawayo', 'Chikwaga', 'Chinhoyi', 'Chitale', 'Goromonzi', 'Hudumela', 'Kwekwe', 'Marondera']
+            },
+            title: {
+                text: 'Election Participation',
+                align: 'center'
+            }
+        };
+        var chartElection = new ApexCharts(document.querySelector("#chart-election"), optionsElection);
+        chartElection.render();
     });
 </script>
 </body>

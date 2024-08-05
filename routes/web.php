@@ -41,3 +41,7 @@ Route::get('/charts', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/polling-station', function () {
+    return view('polling');
+});
