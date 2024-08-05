@@ -35,7 +35,8 @@
 
     .chart-container {
         width: 100%;
-        padding: 20px;
+        padding: 100px 20px;
+        height: 80vh;
         box-sizing: border-box;
     }
 </style>
@@ -570,8 +571,9 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '55%',
-                    endingShape: 'rounded'
+                    columnWidth: '35%',
+                    endingShape: 'rounded',
+                    barSpacing: '10px',
                 },
             },
             dataLabels: {
