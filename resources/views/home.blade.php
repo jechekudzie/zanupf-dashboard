@@ -6,7 +6,7 @@
         <title>Candle Stick Charts | Tapeli - Responsive Admin Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-        <meta name="author" content="Zoyothemes"/>
+        <meta name="author" content="Leading Digital"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
@@ -230,7 +230,7 @@
                     <div id="sidebar-menu">
 
                         <div class="logo-box">
-                            <a href="dashboard.html" class="logo logo-light">
+                            <a href="{{ url('/dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -238,7 +238,7 @@
                 <img src="assets/images/logo-light.png" alt="" height="24">
             </span>
                             </a>
-                            <a href="dashboard.html" class="logo logo-dark">
+                            <a href="{{ url('/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -462,7 +462,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col fs-13 text-muted text-center">
-                                &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Zoyothemes</a>
+                                &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Leading Digital</a>
                             </div>
                         </div>
                     </div>

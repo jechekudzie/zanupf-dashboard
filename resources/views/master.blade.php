@@ -6,7 +6,7 @@
     <title>Data Tables | Tapeli - Responsive Admin Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-    <meta name="author" content="Zoyothemes"/>
+    <meta name="author" content="Leading Digital"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
@@ -6490,7 +6490,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col fs-13 text-muted text-center">
-                        &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Zoyothemes</a>
+                        &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Leading Digital</a>
                     </div>
                 </div>
             </div>

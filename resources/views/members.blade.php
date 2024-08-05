@@ -3,10 +3,10 @@
 <head>
 
     <meta charset="utf-8"/>
-    <title>Data Tables | Tapeli - Responsive Admin Dashboard Template</title>
+    <title>ZANU PF Membership Management Information System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-    <meta name="author" content="Zoyothemes"/>
+    <meta name="description" content="c."/>
+    <meta name="author" content="Leading Digital"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
@@ -28,6 +28,19 @@
     <!-- Icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <style>
+        .filter-dropdown {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <!-- body start -->
@@ -254,17 +267,19 @@
             <div id="sidebar-menu">
 
                 <div class="logo-box">
-                    <a href="dashboard.html" class="logo logo-light">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
+                ZANU-PF
             </span>
                         <span class="logo-lg">
                 <img src="assets/images/logo-light.png" alt="" height="24">
             </span>
                     </a>
-                    <a href="dashboard.html" class="logo logo-dark">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
+                ZANU-PF
             </span>
                         <span class="logo-lg">
                 <img src="assets/images/logo-dark.png" alt="" height="24">
@@ -416,43 +431,60 @@
                     </div>
                 </div>
 
-                <!-- Datatables  -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
 
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Membership</h5>
+                                <h5 class="card-title mb-0">Basic Datatable</h5>
                             </div><!-- end card header -->
 
-                            <div class="card-body">
+                            <div class="container">
 
-                                <div class="card-body">
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap">
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Membership Number</th>
-                                            <th>Province</th>
-                                            <th>Wing</th>
-                                            <th>Registration Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <!-- Rows will be inserted here by JavaScript -->
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
+                                <table id="membershipTable" class="display" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Membership ID</th>
+                                        <th>Province</th>
+                                        <th>District</th>
+                                        <th>Zone</th>
+                                        <th>Cell</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <tr>
+                                        <th><select id="filterName">
+                                                <option value="">Select Name</option>
+                                            </select></th>
+                                        <th><select id="filterMembershipID">
+                                                <option value="">Select ID</option>
+                                            </select></th>
+                                        <th><select id="filterProvince">
+                                                <option value="">Select Province</option>
+                                            </select></th>
+                                        <th><select id="filterDistrict">
+                                                <option value="">Select District</option>
+                                            </select></th>
+                                        <th><select id="filterZone">
+                                                <option value="">Select Zone</option>
+                                            </select></th>
+                                        <th><select id="filterCell">
+                                                <option value="">Select Cell</option>
+                                            </select></th>
+                                        <th><select id="filterStatus">
+                                                <option value="">Select Status</option>
+                                            </select></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                    </tbody>
+                                </table>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
-
-            </div> <!-- container-fluid -->
+            </div>
 
         </div> <!-- content -->
 
@@ -464,7 +496,8 @@
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
                         - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Zoyothemes</a>
+                                                                                          class="text-reset fw-semibold">Leading
+                            Digital</a>
                     </div>
                 </div>
             </div>
@@ -475,7 +508,6 @@
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-
 
 </div>
 <!-- END wrapper -->
@@ -522,36 +554,162 @@
 
 <!-- App js-->
 <script src="assets/js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const tbody = document.getElementById('datatable').getElementsByTagName('tbody')[0];
+    $(document).ready(function () {
+        const firstNameMale = [
+            'John', 'James', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph',
+            'Charles', 'Thomas', 'Christopher', 'Daniel', 'Matthew', 'Anthony', 'Mark',
+            'Donald', 'Steven', 'Paul', 'Andrew', 'Joshua', 'Edward', 'Brian', 'George',
+            'Timothy', 'Ronald', 'Kevin', 'Jason', 'Jeffrey', 'Ryan', 'Gary',
+            'Takudzwa', 'Tinashe', 'Tafadzwa', 'Tanaka', 'Anesu', 'Farai', 'Kudzai', 'Tendai',
+            'Simbarashe', 'Tatenda', 'Munashe', 'Shingirai', 'Kuda', 'Blessing', 'Pride',
+            'Liberty', 'Trust', 'Knowledge', 'Lovemore', 'Remember',
+            'Evidence', 'Progress', 'Courage', 'Comfort', 'Energy',
+            'Bright', 'Clever', 'Gift', 'Patience', 'Promise',
+            'Fortune', 'Prosper', 'Reason', 'Saviour', 'Silence',
+            'Sunshine', 'Talkmore', 'Welcome', 'Wishmore', 'Zororo'
+        ];
 
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
+        const firstNameFemale = [
+            'Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara', 'Susan', 'Jessica',
+            'Sarah', 'Karen', 'Nancy', 'Lisa', 'Margaret', 'Betty', 'Sandra', 'Ashley', 'Dorothy',
+            'Kimberly', 'Emily', 'Donna', 'Michelle', 'Carol', 'Amanda', 'Melissa', 'Deborah',
+            'Rutendo', 'Tendai', 'Tsitsi', 'Tatenda', 'Paidamoyo', 'Ruvimbo', 'Tariro', 'Shamiso',
+            'Nyasha', 'Anesu', 'Fadzai', 'Shantel', 'Gamuchirai', 'Panache', 'Chenai',
+            'Chipo', 'Tafadzwa', 'Tanyaradzwa', 'Ruvarashe', 'Makanaka',
+            'Munashe', 'Tapiwa', 'Batsirai', 'Beulah', 'Blessing',
+            'Charity', 'Faith', 'Grace', 'Hope', 'Joy',
+            'Kuziva', 'Love', 'Mercy', 'Patience', 'Praise',
+            'Precious', 'Prudence', 'Shalom', 'Simba', 'Tarisai'
+        ];
+
+        const lastNames = [
+            'Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson',
+            'Moore', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin',
+            'Thompson', 'Garcia', 'Martinez', 'Robinson', 'Clark', 'Rodriguez', 'Lewis', 'Lee',
+            'Moyo', 'Chinotimba', 'Sibanda', 'Mudzuri', 'Makoni', 'Munyoro', 'Chigumba', 'Mukarati',
+            'Nyathi', 'Chiwenga', 'Gumbo', 'Marufu', 'Chifamba', 'Dube', 'Mutasa',
+            'Ncube', 'Marima', 'Banda', 'Chisango', 'Foya',
+            'Gwatidzo', 'Hove', 'Jiri', 'Kachote', 'Kadzura',
+            'Kaseke', 'Mafara', 'Makumbe', 'Mandaza', 'Mangezi',
+            'Maposa', 'Masunda', 'Matenga', 'Mavhaire', 'Mawere'
+        ];
+
+        const provinces = ['Manicaland', 'Masvingo', 'Matabeleland North', 'Matabeleland South', 'Midlands', 'Mashonaland Central', 'Mashonaland East', 'Mashonaland West', 'Harare', 'Bulawayo'];
+        const wings = ['Main Wing', 'Youth Wing', 'Women\'s League', 'War Veterans League'];
+        const genders = ['Male', 'Female'];
+        const statuses = ['Active', 'Inactive'];
+        const districts = ['Wedza', 'Chimanimani', 'Seke', 'Murehwa', 'Nyanga', 'Mutare', 'Rusape', 'Chipinge', 'Buhera', 'Makoni'];
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
         }
 
-        function randomDate(start, end) {
-            return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+        function generateMembershipId() {
+            const numbers = Math.floor(100000 + Math.random() * 900000);
+            const letter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            return `33-${numbers}${letter}33`;
         }
 
-        const names = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown", "Rachel Green", "Chandler Bing", "Ross Geller", "Monica Geller", "Joey Tribbiani", "Phoebe Buffay"];
-        const provinces = ["Harare", "Bulawayo", "Manicaland", "Mashonaland", "Midlands"];
-        const wings = ["Youth", "Main", "Women's"];
-
-        for (let i = 0; i < 30; i++) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${names[getRandomInt(names.length)]}</td>
-                        <td>${getRandomInt(1000000) + 100000}</td>
-                        <td>${provinces[getRandomInt(provinces.length)]}</td>
-                        <td>${wings[getRandomInt(wings.length)]}</td>
-                        <td>${randomDate(new Date(2012, 0, 1), new Date()).toLocaleDateString()}</td>
-                        <td>${getRandomInt(2) === 0 ? 'Active' : 'Inactive'}</td>`;
-            tbody.appendChild(tr);
+        function generateMembers(num) {
+            let members = [];
+            for (let i = 0; i < num; i++) {
+                let gender = getRandomElement(genders);
+                let firstName = gender === 'Male' ? getRandomElement(firstNameMale) : getRandomElement(firstNameFemale);
+                let lastName = getRandomElement(lastNames);
+                let name = `${firstName} ${lastName}`;
+                let member = {
+                    name: name,
+                    membershipId: generateMembershipId(),
+                    province: getRandomElement(provinces),
+                    district: getRandomElement(districts),
+                    zone: `Zone ${Math.ceil(Math.random() * 10)}`,
+                    cell: `Cell ${Math.ceil(Math.random() * 20)}`,
+                    status: getRandomElement(statuses)
+                };
+                members.push(member);
+            }
+            return members;
         }
+
+        const members = generateMembers(300);
+
+        function populateTable(members) {
+            let tableBody = $('#tableBody');
+            tableBody.empty();
+            members.forEach(member => {
+                tableBody.append(`
+                        <tr>
+                            <td>${member.name}</td>
+                            <td>${member.membershipId}</td>
+                            <td>${member.province}</td>
+                            <td>${member.district}</td>
+                            <td>${member.zone}</td>
+                            <td>${member.cell}</td>
+                            <td>${member.status}</td>
+                        </tr>
+                    `);
+            });
+        }
+
+        function populateFilterOptions() {
+            $('#membershipTable thead tr:eq(1) th').each(function (i) {
+                var select = $(this).find('select');
+                select.empty();
+                select.append('<option value="">Select</option>');
+                $('#membershipTable tbody tr').each(function () {
+                    var cellText = $(this).find('td').eq(i).text();
+                    if (select.find('option[value="' + cellText + '"]').length === 0) {
+                        select.append('<option value="' + cellText + '">' + cellText + '</option>');
+                    }
+                });
+            });
+        }
+
+        function applyFilter() {
+            $('#membershipTable thead select').on('change', function () {
+                var val = $(this).val();
+                var column = $(this).parent().index();
+                var searchTerms = val.map(function (v) {
+                    return '^' + $.fn.dataTable.util.escapeRegex(v) + '$';
+                }).join('|');
+                $('#membershipTable').DataTable().column(column)
+                    .search(searchTerms ? searchTerms : '', true, false)
+                    .draw();
+            });
+        }
+
+        populateTable(members);
+
+        const table = $('#membershipTable').DataTable({
+            initComplete: function () {
+                populateFilterOptions();
+                applyFilter();
+                $('#membershipTable thead select').select2({
+                    placeholder: "Select",
+                    allowClear: true,
+                    width: 'resolve'
+                });
+            }
+        });
+
+        // Populate filter options after DataTable initialization
+        table.on('draw', function () {
+            populateFilterOptions();
+        });
     });
 </script>
-
-
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
 
     <meta charset="utf-8"/>
-    <title>Data Tables | Tapeli - Responsive Admin Dashboard Template</title>
+    <title>ZANU PF Membership Management Information System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-    <meta name="author" content="Zoyothemes"/>
+    <meta name="description" content="c."/>
+    <meta name="author" content="Leading Digital"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
@@ -254,7 +254,7 @@
             <div id="sidebar-menu">
 
                 <div class="logo-box">
-                    <a href="dashboard.html" class="logo logo-light">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -262,7 +262,7 @@
                 <img src="assets/images/logo-light.png" alt="" height="24">
             </span>
                     </a>
-                    <a href="dashboard.html" class="logo logo-dark">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -447,9 +447,9 @@
                                     <h6 class="card-subtitle mb-2 text-muted">${project.wing}</h6>
                                     <p class="card-text">Status: ${project.status}</p>
                                     <div class="progress mb-2">
-                                        <div class="progress-bar" role="progressbar" style="width: ${project.funded / project.required * 100}%" aria-valuenow="${project.funded}" aria-valuemin="0" aria-valuemax="${project.required}"></div>
+                                        <div class="progress-bar" role="progressbar" style="width: ${project.funded / project.required * 100}%" aria-valuenow="" aria-valuemin="0" aria-valuemax=""></div>
                                     </div>
-                                    <p>Funding: $${project.funded}K of $${project.required}K</p>
+                                    <p>Completion: ${project.funded / project.required * 100}%</p>
                                     <a href="#" class="btn btn-primary btn-sm">View Details</a>
                                     <a href="#" class="btn btn-secondary btn-sm">Update Progress</a>
                                     <a href="#" class="btn btn-success btn-sm">Donate</a>
@@ -476,7 +476,7 @@
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
                         - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Zoyothemes</a>
+                                                                                          class="text-reset fw-semibold">Leading Digital</a>
                     </div>
                 </div>
             </div>

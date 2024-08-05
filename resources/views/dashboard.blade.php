@@ -6,7 +6,7 @@
     <title>Candle Stick Charts | Tapeli - Responsive Admin Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-    <meta name="author" content="Zoyothemes"/>
+    <meta name="author" content="Leading Digital"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!-- App favicon -->
@@ -244,7 +244,7 @@
             <div id="sidebar-menu">
 
                 <div class="logo-box">
-                    <a href="dashboard.html" class="logo logo-light">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -252,7 +252,7 @@
                 <img src="assets/images/logo-light.png" alt="" height="24">
             </span>
                     </a>
-                    <a href="dashboard.html" class="logo logo-dark">
+                    <a href="{{ url('/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
@@ -391,61 +391,35 @@
 
     <div class="content-page">
         <div class="content">
-
-
             <div class="container-fluid py-4">
                 <h2 class="mb-4">ZANU PF Party Management Dashboard</h2>
 
-                <!-- Revenue Cards -->
-                <div class="row">
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Revenue from Subscriptions
-                            </div>
-                            <div class="card-body">
-                                <canvas id="revenueSubscriptionsChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Revenue from Merchandise Sales
-                            </div>
-                            <div class="card-body">
-                                <canvas id="revenueMerchandiseChart"></canvas>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="max-w-7xl mx-auto">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-underline border-b" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#home" role="tab">
+                                        <span>Membership Overview</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content p-3 text-muted">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <!-- Multi-color Graph for Membership by Province -->
+                                    <canvas id="membersByProvince" class="h-96"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Events and Membership Overview -->
-                <div class="row">
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Event Attendance Overview
-                            </div>
-                            <div class="card-body">
-                                <canvas id="eventAttendanceChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                Membership Demographics
-                            </div>
-                            <div class="card-body">
-                                <canvas id="membershipDemographicsChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-
-
         </div> <!-- content -->
 
         <!-- Footer Start -->
@@ -456,7 +430,8 @@
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
                         - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Zoyothemes</a>
+                                                                                          class="text-reset fw-semibold">Leading
+                            Digital</a>
                     </div>
                 </div>
             </div>
@@ -477,59 +452,99 @@
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/libs/simplebar/simplebar.min.js"></script>
 <script src="assets/libs/node-waves/waves.min.js"></script>
-<script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 <script src="assets/libs/feather-icons/feather.min.js"></script>
-
-<!-- Apexcharts JS -->
-<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-<script src="https://apexcharts.com/samples/assets/ohlc.js"></script>
-
-<!-- Candlestick Charts Init Js -->
-<script src="assets/js/pages/apexcharts-candlestick.init.js"></script>
-
-<!-- App js-->
 <script src="assets/js/app.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Chart for Revenue from Subscriptions
-        const ctxRevenueSubscriptions = document.getElementById('revenueSubscriptionsChart').getContext('2d');
-        new Chart(ctxRevenueSubscriptions, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April'],
-                datasets: [{
-                    label: 'Subscription Revenue ($)',
-                    data: [1000, 1500, 1300, 1800],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                }]
-            }
-        });
+    window.onload = function () {
+        const provinces = ['Manicaland', 'Masvingo', 'Matabeleland North', 'Matabeleland South', 'Midlands', 'Mashonaland Central', 'Mashonaland East', 'Mashonaland West', 'Harare', 'Bulawayo'];
 
-        // Chart for Revenue from Merchandise Sales
-        const ctxRevenueMerchandise = document.getElementById('revenueMerchandiseChart').getContext('2d');
-        new Chart(ctxRevenueMerchandise, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April'],
-                datasets: [{
-                    label: 'Merchandise Sales ($)',
-                    data: [1200, 1900, 1600, 2000],
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            }
-        });
+        const mainWingData = [12, 19, 3, 5, 2, 3, 10, 15, 8, 6];
+        const youthWingData = [8, 11, 5, 6, 9, 7, 13, 14, 10, 9];
+        const womensLeagueData = [15, 10, 7, 8, 5, 6, 12, 9, 14, 13];
+        const warVeteransLeagueData = [5, 7, 11, 13, 6, 8, 9, 10, 12, 14];
 
-        // More charts can be initialized in a similar way
-    });
+        const chartColors = {
+            mainWing: 'rgba(255, 0, 0, 1)',
+            youthWing: 'rgba(0, 0, 0, 1)',
+            womensLeague: 'rgba(0, 128, 0, 1)',
+            warVeteransLeague: 'rgba(255, 255, 0, 1)'
+        };
+
+        const borderColor = {
+            mainWing: 'rgba(255, 0, 0, 1)',
+            youthWing: 'rgba(0, 0, 0, 1)',
+            womensLeague: 'rgba(0, 128, 0, 1)',
+            warVeteransLeague: 'rgba(0, 0, 0, 1)'
+        };
+
+        // Create a multi-color stacked bar chart for Membership by Province
+        function createStackedChart(ctx) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: provinces,
+                    datasets: [
+                        {
+                            label: 'Main Wing',
+                            data: mainWingData,
+                            backgroundColor: chartColors.mainWing,
+                            borderColor: borderColor.mainWing,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Youth Wing',
+                            data: youthWingData,
+                            backgroundColor: chartColors.youthWing,
+                            borderColor: borderColor.youthWing,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Women\'s League',
+                            data: womensLeagueData,
+                            backgroundColor: chartColors.womensLeague,
+                            borderColor: borderColor.womensLeague,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'War Veterans League',
+                            data: warVeteransLeagueData,
+                            backgroundColor: chartColors.warVeteransLeague,
+                            borderColor: borderColor.warVeteransLeague,
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        }
+                    }
+                }
+            });
+        }
+
+        createStackedChart(document.getElementById('membersByProvince').getContext('2d'));
+    };
 
 </script>
+
 
 </body>
 </html>

@@ -17,18 +17,7 @@
 
     <!-- Icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .widget-icons-sections {
-            padding: 10px;
-        }
-
-        .widgets-icons {
-            width: 24px;
-            height: 24px;
-        }
-    </style>
 </head>
 
 <!-- body start -->
@@ -388,84 +377,91 @@
 
             </div>
             <!-- End Sidebar -->
+
+
             <div class="clearfix"></div>
 
         </div>
     </div>
     <!-- Left Sidebar End -->
 
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
 
     <div class="content-page">
         <div class="content">
+            <div class="container-fluid py-4">
+                <h2 class="mb-4">ZANU PF Party Management Dashboard</h2>
 
-            <!-- Start Content-->
-            <div class="container-xxl">
 
-                <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-                    <div class="flex-grow-1">
-                        <h4 class="fs-18 fw-semibold m-0">Membership Break Down</h4>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="max-w-7xl mx-auto">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-underline border-b" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#home" role="tab">
+                                        <span>Members Overview</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#profile" role="tab">
+                                        <span>Financials</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#messages" role="tab">
+                                        <span>Events and Activities</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content p-3 text-muted">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <!-- Multi-color Graph for Membership by Province -->
+                                    <canvas id="membersByProvince" class="h-96"></canvas>
+                                </div>
+                                <div class="tab-pane" id="profile" role="tabpanel">
+                                    <!-- Financial Overview -->
+                                    <canvas id="revenueFromSubscriptions" class="h-96"></canvas>
+                                    <canvas id="revenueFromMerch" class="h-96"></canvas>
+                                </div>
+                                <div class="tab-pane" id="messages" role="tabpanel">
+                                    <!-- Events Calendar -->
+                                    <canvas id="eventsCalendar" class="h-96"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sales Chart -->
+
+            </div>
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
-                                        <i data-feather="git-commit" class="widgets-icons"></i>
-                                    </div>
-                                    <h5 class="card-title mb-0">Members</h5>
-                                </div>
-                            </div>
-
-                            <div class="card-body">
-                                <div id="chart-membership" style="padding-bottom: 20px" class="apex-charts"></div>
-                            </div>
-                        </div>
+                    <div class="col fs-13 text-muted text-center">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
+                                                                                          class="text-reset fw-semibold">Leading
+                            Digital</a>
                     </div>
-
-
-                    <!-- Subscription Trends Card -->
-                    <div class="col-md-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
-                                        <i data-feather="bar-chart-2" class="widgets-icons"></i>
-                                    </div>
-                                    <h5 class="card-title mb-0">Subscription Trends</h5>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-subscription" class="apex-charts"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event Attendance Trends Card -->
-                    <div class="col-md-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <div class="border border-dark rounded-2 me-2 widget-icons-sections">
-                                        <i data-feather="calendar" class="widgets-icons"></i>
-                                    </div>
-                                    <h5 class="card-title mb-0">Event Attendance Trends</h5>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-attendance" class="apex-charts"></div>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
-        </div>
+        </footer>
+        <!-- end Footer -->
+
     </div>
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
 
 </div>
 <!-- END wrapper -->
@@ -475,80 +471,99 @@
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/libs/simplebar/simplebar.min.js"></script>
 <script src="assets/libs/node-waves/waves.min.js"></script>
-<script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 <script src="assets/libs/feather-icons/feather.min.js"></script>
-<!-- App js-->
 <script src="assets/js/app.js"></script>
-
-<!-- ApexCharts JS -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
-<!-- Feather Icons JS -->
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        feather.replace();
+    window.onload = function () {
+        const provinces = ['Manicaland', 'Masvingo', 'Matabeleland North', 'Matabeleland South', 'Midlands', 'Mashonaland Central', 'Mashonaland East', 'Mashonaland West', 'Harare', 'Bulawayo'];
 
-        // Membership Distribution Chart
-        var optionsMembership = {
-            chart: {
-                type: 'pie',
-            },
-            series: [40, 30, 20, 10], // Example data
-            labels: ['Main Wing', 'Youth League', 'Women\'s League', 'War Veterans League'],
-            title: {
-                text: 'Membership Distribution',
-                align: 'center'
-            }
+        const mainWingData = [12, 19, 3, 5, 2, 3, 10, 15, 8, 6];
+        const youthWingData = [8, 11, 5, 6, 9, 7, 13, 14, 10, 9];
+        const womensLeagueData = [15, 10, 7, 8, 5, 6, 12, 9, 14, 13];
+        const warVeteransLeagueData = [5, 7, 11, 13, 6, 8, 9, 10, 12, 14];
+
+        const chartColors = {
+            mainWing: 'rgba(255, 99, 132, 0.2)',
+            youthWing: 'rgba(54, 162, 235, 0.2)',
+            womensLeague: 'rgba(75, 192, 192, 0.2)',
+            warVeteransLeague: 'rgba(153, 102, 255, 0.2)'
         };
-        var chartMembership = new ApexCharts(document.querySelector("#chart-membership"), optionsMembership);
-        chartMembership.render();
 
-        // Subscription Trends Chart
-        var optionsSubscription = {
-            chart: {
+        const borderColor = {
+            mainWing: 'rgba(255, 99, 132, 1)',
+            youthWing: 'rgba(54, 162, 235, 1)',
+            womensLeague: 'rgba(75, 192, 192, 1)',
+            warVeteransLeague: 'rgba(153, 102, 255, 1)'
+        };
+
+        // Create a multi-color stacked bar chart for Membership by Province
+        function createStackedChart(ctx) {
+            new Chart(ctx, {
                 type: 'bar',
-            },
-            series: [{
-                name: 'Renewals',
-                data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
-            }, {
-                name: 'Expirations',
-                data: [20, 29, 37, 36, 44, 45, 50, 58, 68]
-            }],
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-            },
-            title: {
-                text: 'Subscription Trends',
-                align: 'center'
-            }
-        };
-        var chartSubscription = new ApexCharts(document.querySelector("#chart-subscription"), optionsSubscription);
-        chartSubscription.render();
+                data: {
+                    labels: provinces,
+                    datasets: [
+                        {
+                            label: 'Main Wing',
+                            data: mainWingData,
+                            backgroundColor: chartColors.mainWing,
+                            borderColor: borderColor.mainWing,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Youth Wing',
+                            data: youthWingData,
+                            backgroundColor: chartColors.youthWing,
+                            borderColor: borderColor.youthWing,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Women\'s League',
+                            data: womensLeagueData,
+                            backgroundColor: chartColors.womensLeague,
+                            borderColor: borderColor.womensLeague,
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'War Veterans League',
+                            data: warVeteransLeagueData,
+                            backgroundColor: chartColors.warVeteransLeague,
+                            borderColor: borderColor.warVeteransLeague,
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        }
+                    }
+                }
+            });
+        }
 
-        // Event Attendance Trends Chart
-        var optionsAttendance = {
-            chart: {
-                type: 'line',
-            },
-            series: [{
-                name: 'Event Attendance',
-                data: [150, 200, 250, 300, 280, 350, 400, 450, 420, 500, 550, 600] // Example data
-            }],
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            title: {
-                text: 'Event Attendance Trends',
-                align: 'center'
-            }
-        };
-        var chartAttendance = new ApexCharts(document.querySelector("#chart-attendance"), optionsAttendance);
-        chartAttendance.render();
-    });
+        createStackedChart(document.getElementById('membersByProvince').getContext('2d'));
+    };
+
 </script>
+
+
 </body>
 </html>
