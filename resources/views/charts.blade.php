@@ -54,149 +54,13 @@
                         </button>
                     </li>
 
-                    <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="false" aria-expanded="false">
-                            <i data-feather="bell" class="noti-icon"></i>
-                            <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-lg">
-
-                            <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="m-0">
-                                            <span class="float-end">
-                                                <a href="" class="text-dark">
-                                                    <small>Clear All</small>
-                                                </a>
-                                            </span>Notification
-                                </h5>
-                            </div>
-
-                            <div class="noti-scroll" data-simplebar>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);"
-                                   class="dropdown-item notify-item text-muted link-primary active">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-12.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <p class="notify-details">Carl Steadham</p>
-                                        <small class="text-muted">5 min ago</small>
-                                    </div>
-                                    <p class="mb-0 user-msg">
-                                        <small class="fs-14">Completed <span class="text-reset">Improve workflow in Figma</span></small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-2.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="notify-content">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="notify-details">Olivia McGuire</p>
-                                            <small class="text-muted">1 min ago</small>
-                                        </div>
-
-                                        <div class="d-flex mt-2 align-items-center">
-                                            <div class="notify-sub-icon">
-                                                <i class="mdi mdi-download-box text-dark"></i>
-                                            </div>
-
-                                            <div>
-                                                <p class="notify-details mb-0">dark-themes.zip</p>
-                                                <small class="text-muted">2.4 MB</small>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-3.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="notify-content">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="notify-details">Travis Williams</p>
-                                            <small class="text-muted">7 min ago</small>
-                                        </div>
-                                        <p class="noti-mentioned p-2 rounded-2 mb-0 mt-2"><span class="text-primary">@Patryk</span>
-                                            Please make sure that you're....</p>
-                                    </div>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-8.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <p class="notify-details">Violette Lasky</p>
-                                        <small class="text-muted">5 min ago</small>
-                                    </div>
-                                    <p class="mb-0 user-msg">
-                                        <small class="fs-14">Completed <span
-                                                class="text-reset">Create new components</span></small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-5.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <p class="notify-details">Ralph Edwards</p>
-                                        <small class="text-muted">5 min ago</small>
-                                    </div>
-                                    <p class="mb-0 user-msg">
-                                        <small class="fs-14">Completed <span class="text-reset">Improve workflow in React</span></small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-6.jpg" class="img-fluid rounded-circle"
-                                             alt=""/>
-                                    </div>
-                                    <div class="notify-content">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <p class="notify-details">Jocab jones</p>
-                                            <small class="text-muted">7 min ago</small>
-                                        </div>
-                                        <p class="noti-mentioned p-2 rounded-2 mb-0 mt-2"><span class="text-reset">@Patryk</span>
-                                            Please make sure that you're....</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- All-->
-                            <a href="javascript:void(0);"
-                               class="dropdown-item text-center text-primary notify-item notify-all">
-                                View all
-                                <i class="fe-arrow-right"></i>
-                            </a>
-
-                        </div>
-                    </li>
 
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
                            role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="assets/images/users/user-11.jpg" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ms-1">
-                                        Christian <i class="mdi mdi-chevron-down"></i>
+                                        Admin <i class="mdi mdi-chevron-down"></i>
                                     </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -256,8 +120,10 @@
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
-                        <span class="logo-lg">
-                <img src="assets/images/logo-dark.png" alt="" height="24">
+                        <span class="logo-lg" style="font-size: 19px;
+  font-weight: bolder;
+  color: black;">
+                <img src="assets/images/logo-dark.png" alt="" height="24">ZANU PF
             </span>
                     </a>
                 </div>
@@ -289,7 +155,8 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('membership') }}">Break Down</a>
-                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
+                                </li>
+                                <li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>
@@ -461,8 +328,9 @@
                     <div class="col fs-13 text-muted text-center">
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
-                        - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Leading Digital</a>
+                        - Developed by <a href="#!"
+                                                                                          class="text-reset fw-semibold">Leading
+                            Digital</a>
                     </div>
                 </div>
             </div>
@@ -509,7 +377,7 @@
                 labels: ['18-25', '26-35', '36-50', '51+'],
                 datasets: [{
                     data: [120, 150, 180, 90],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED']
+                    backgroundColor: ['#FF0000', '#008000', '#000000', '#FFFF00']
                 }]
             },
             options: {
@@ -525,7 +393,7 @@
                 labels: ['Male', 'Female'],
                 datasets: [{
                     data: [300, 200],
-                    backgroundColor: ['#36A2EB', '#FF6384']
+                    backgroundColor: ['#00FF00', '#FF0000']
                 }]
             },
             options: {
@@ -543,7 +411,7 @@
                     label: 'Members',
                     data: [250, 400, 300, 450, 500, 600],
                     fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
+                    borderColor: '#FF0000',
                     tension: 0.1
                 }]
             },

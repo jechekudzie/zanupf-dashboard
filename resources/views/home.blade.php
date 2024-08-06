@@ -182,7 +182,7 @@
                                 <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="assets/images/users/user-11.jpg" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ms-1">
-                                        Christian <i class="mdi mdi-chevron-down"></i>
+                                        Admin <i class="mdi mdi-chevron-down"></i>
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -242,8 +242,10 @@
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
             </span>
-                                <span class="logo-lg">
-                <img src="assets/images/logo-dark.png" alt="" height="24">
+                                <span class="logo-lg" style="font-size: 19px;
+  font-weight: bolder;
+  color: black;">
+                <img src="assets/images/logo-dark.png" alt="" height="24">ZANU PF
             </span>
                             </a>
                         </div>
