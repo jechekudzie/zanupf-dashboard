@@ -45,3 +45,11 @@ Route::get('/dashboard', function () {
 Route::get('/polling-station', function () {
     return view('polling');
 });
+
+Route::get('/pol-station', function () {
+    return view('polling');
+});
+
+Route::get('/dashboard-new', function () {
+    return view('newdash');
+});

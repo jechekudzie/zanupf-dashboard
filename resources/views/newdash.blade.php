@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <meta charset="utf-8"/>
-    <title>Candle Stick Charts | Tapeli - Responsive Admin Dashboard Template</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
-    <meta name="author" content="Leading Digital"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-    <!-- App favicon -->
+    <title>ZANU PF Membership Management Dashboard</title>
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <!-- App css -->
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-
-    <!-- Icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .filter {
+            margin-bottom: 10px;
+        }
+    </style>
+
 </head>
 
 <!-- body start -->
@@ -25,7 +35,6 @@
 
 <!-- Begin page -->
 <div id="app-layout">
-
 
     <!-- Topbar Start -->
     <div class="topbar-custom">
@@ -111,14 +120,17 @@
                     <a href="{{ url('/dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
+                ZANU PF
             </span>
                         <span class="logo-lg">
                 <img src="assets/images/logo-light.png" alt="" height="24">
+                             ZANU PF
             </span>
                     </a>
                     <a href="{{ url('/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="assets/images/logo-sm.png" alt="" height="22">
+                 ZANU PF
             </span>
                         <span class="logo-lg" style="font-size: 19px;
   font-weight: bolder;
@@ -155,7 +167,8 @@
                                 </li>
                                 <li>
                                     <a href="{{ url('membership') }}">Break Down</a>
-                                </li><li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
+                                </li>
+                                <li><a href="{{ url('polling-station')}}">Polling Stations</a></li>
                             </ul>
                         </div>
                     </li>
@@ -266,19 +279,14 @@
                         <div class="max-w-7xl mx-auto">
                             <!-- Nav tabs -->
                             <ul class="nav nav-underline border-b" role="tablist">
-                                <li class="nav-item" role="presentation">
+                            <li class="nav-item" role="presentation">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#home" role="tab">
-                                        <span>Members Overview</span>
+                                        <span>Membership Home</span>
                                     </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#profile" role="tab">
-                                        <span>Financials</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#messages" role="tab">
-                                        <span>Events and Activities</span>
+                                </li>    
+                            <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#overview" role="tab">
+                                        <span>Membership Breakdown</span>
                                     </a>
                                 </li>
                             </ul>
@@ -286,23 +294,148 @@
                             <!-- Tab panes -->
                             <div class="tab-content p-3 text-muted">
                                 <div class="tab-pane active" id="home" role="tabpanel">
+                                  
+                                <div class="filter">
+                                    <label for="provinceFilter">Select Province:</label>
+                                    <select id="provinceFilter" onchange="filterData()">
+                                        <option value="all">All Provinces</option>
+                                        <option value="harare">Harare</option>
+                                        <option value="bulawayo">Bulawayo</option>
+                                        <option value="mashonaland_west">Mashonaland West</option>
+                                        <option value="manicaland">Manicaland</option>
+                                        <option value="masvingo">Masvingo</option>
+                                        <option value="matabeleland_north">Matabeleland North</option>
+                                        <option value="matabeleland_south">Matabeleland South</option>
+                                        <option value="midlands">Midlands</option>
+                                        <option value="mashonaland_central">Mashonaland Central</option>
+                                        <option value="mashonaland_east">Mashonaland East</option>
+                                    </select>
+
+                                    <label for="districtFilter">Select Admin District:</label>
+                                    <select id="districtFilter" onchange="filterData()">
+                                        <option value="all">All Districts</option>
+                                        <!-- Populate dynamically based on selected province -->
+                                    </select>
+
+                                    <label for="constituencyFilter">Select Constituency:</label>
+                                    <select id="constituencyFilter" onchange="filterData()">
+                                        <option value="all">All Constituencies</option>
+                                        <!-- Populate dynamically based on selected district -->
+                                    </select>
+
+                                    <label for="wardFilter">Select Ward:</label>
+                                    <select id="wardFilter" onchange="filterData()">
+                                        <option value="all">All Wards</option>
+                                        <!-- Populate dynamically based on selected constituency -->
+                                    </select>
+
+                                    <label for="partyDistrictFilter">Select Party District:</label>
+                                    <select id="partyDistrictFilter" onchange="filterData()">
+                                        <option value="all">All Party Districts</option>
+                                        <!-- Populate dynamically based on selected ward -->
+                                    </select>
+
+                                    <label for="partyBranchFilter">Select Party Branch:</label>
+                                    <select id="partyBranchFilter" onchange="filterData()">
+                                        <option value="all">All Party Branches</option>
+                                        <!-- Populate dynamically based on selected party district -->
+                                    </select>
+
+                                    <label for="partyCellFilter">Select Party Cell:</label>
+                                    <select id="partyCellFilter" onchange="filterData()">
+                                        <option value="all">All Party Cells</option>
+                                        <!-- Populate dynamically based on selected party branch -->
+                                    </select>
+                                </div>
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Province</th>
+                                            <th>Admin District</th>
+                                            <th>Constituency</th>
+                                            <th>Wards</th>
+                                            <th>Party District</th>
+                                            <th>Party Branch</th>
+                                            <th>Party Cell</th>
+                                            <th>Main Wing</th>
+                                            <th>Youth League</th>
+                                            <th>Women's League</th>
+                                            <th>War Veterans League</th>
+                                            <th>Total Members</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="memberTable">
+                                        <!-- Sample data, replace with dynamic content -->
+                                        <tr data-province="harare" data-district="harare_central" data-constituency="harare_east" data-ward="ward1" data-party-district="central_district" data-party-branch="branch1" data-party-cell="cell1">
+                                            <td>Harare</td>
+                                            <td>Harare Central</td>
+                                            <td>Harare East</td>
+                                            <td>Ward 1</td>
+                                            <td>Central District</td>
+                                            <td>Branch 1</td>
+                                            <td>Cell 1</td>
+                                            <td>2000</td>
+                                            <td>500</td>
+                                            <td>700</td>
+                                            <td>300</td>
+                                            <td>3500</td>
+                                        </tr>
+                                        <tr data-province="manicaland" data-district="mutare" data-constituency="mutare_central" data-ward="ward2" data-party-district="north_district" data-party-branch="branch2" data-party-cell="cell3">
+                                            <td>Manicaland</td>
+                                            <td>Mutare</td>
+                                            <td>Mutare Central</td>
+                                            <td>Ward 2</td>
+                                            <td>North District</td>
+                                            <td>Branch 2</td>
+                                            <td>Cell 3</td>
+                                            <td>1200</td>
+                                            <td>300</td>
+                                            <td>500</td>
+                                            <td>150</td>
+                                            <td>2150</td>
+                                        </tr>
+                                        <tr data-province="masvingo" data-district="gutu" data-constituency="gutu_south" data-ward="ward3" data-party-district="south_district" data-party-branch="branch3" data-party-cell="cell2">
+                                            <td>Masvingo</td>
+                                            <td>Gutu</td>
+                                            <td>Gutu South</td>
+                                            <td>Ward 3</td>
+                                            <td>South District</td>
+                                            <td>Branch 3</td>
+                                            <td>Cell 2</td>
+                                            <td>1800</td>
+                                            <td>400</td>
+                                            <td>600</td>
+                                            <td>200</td>
+                                            <td>3000</td>
+                                        </tr>
+                                        <tr data-province="midlands" data-district="kwekwe" data-constituency="kwekwe_central" data-ward="ward4" data-party-district="central_district" data-party-branch="branch4" data-party-cell="cell4">
+                                            <td>Midlands</td>
+                                            <td>Kwekwe</td>
+                                            <td>Kwekwe Central</td>
+                                            <td>Ward 4</td>
+                                            <td>Central District</td>
+                                            <td>Branch 4</td>
+                                            <td>Cell 4</td>
+                                            <td>1500</td>
+                                            <td>350</td>
+                                            <td>550</td>
+                                            <td>250</td>
+                                            <td>2650</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+
+                                </div>
+                                <div class="tab-pane" id="overview" role="tabpanel">
                                     <!-- Multi-color Graph for Membership by Province -->
                                     <canvas id="membersByProvince" class="h-96"></canvas>
-                                </div>
-                                <div class="tab-pane" id="profile" role="tabpanel">
-                                    <!-- Financial Overview -->
-                                    <canvas id="revenueFromSubscriptions" class="h-96"></canvas>
-                                    <canvas id="revenueFromMerch" class="h-96"></canvas>
-                                </div>
-                                <div class="tab-pane" id="messages" role="tabpanel">
-                                    <!-- Events Calendar -->
-                                    <canvas id="eventsCalendar" class="h-96"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div> <!-- content -->
@@ -315,7 +448,7 @@
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
                         - Developed by <a href="#!"
-                                                                                          class="text-reset fw-semibold">Leading
+                                          class="text-reset fw-semibold">Leading
                             Digital</a>
                     </div>
                 </div>
@@ -350,17 +483,17 @@
         const warVeteransLeagueData = [5, 7, 11, 13, 6, 8, 9, 10, 12, 14];
 
         const chartColors = {
-            mainWing: 'rgba(255, 99, 132, 0.2)',
-            youthWing: 'rgba(54, 162, 235, 0.2)',
-            womensLeague: 'rgba(75, 192, 192, 0.2)',
-            warVeteransLeague: 'rgba(153, 102, 255, 0.2)'
+            mainWing: 'rgba(255, 0, 0, 1)',
+            youthWing: 'rgba(0, 0, 0, 1)',
+            womensLeague: 'rgba(0, 128, 0, 1)',
+            warVeteransLeague: 'rgba(255, 255, 0, 1)'
         };
 
         const borderColor = {
-            mainWing: 'rgba(255, 99, 132, 1)',
-            youthWing: 'rgba(54, 162, 235, 1)',
-            womensLeague: 'rgba(75, 192, 192, 1)',
-            warVeteransLeague: 'rgba(153, 102, 255, 1)'
+            mainWing: 'rgba(255, 0, 0, 1)',
+            youthWing: 'rgba(0, 0, 0, 1)',
+            womensLeague: 'rgba(0, 128, 0, 1)',
+            warVeteransLeague: 'rgba(0, 0, 0, 1)'
         };
 
         // Create a multi-color stacked bar chart for Membership by Province
@@ -427,6 +560,41 @@
 
         createStackedChart(document.getElementById('membersByProvince').getContext('2d'));
     };
+
+    function filterData() {
+        var provinceFilter = document.getElementById('provinceFilter').value;
+        var districtFilter = document.getElementById('districtFilter').value;
+        var constituencyFilter = document.getElementById('constituencyFilter').value;
+        var wardFilter = document.getElementById('wardFilter').value;
+        var partyDistrictFilter = document.getElementById('partyDistrictFilter').value;
+        var partyBranchFilter = document.getElementById('partyBranchFilter').value;
+        var partyCellFilter = document.getElementById('partyCellFilter').value;
+
+        var rows = document.getElementById('memberTable').getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var province = row.getAttribute('data-province');
+            var district = row.getAttribute('data-district');
+            var constituency = row.getAttribute('data-constituency');
+            var ward = row.getAttribute('data-ward');
+            var partyDistrict = row.getAttribute('data-party-district');
+            var partyBranch = row.getAttribute('data-party-branch');
+            var partyCell = row.getAttribute('data-party-cell');
+
+            if ((provinceFilter === 'all' || province === provinceFilter) &&
+                (districtFilter === 'all' || district === districtFilter) &&
+                (constituencyFilter === 'all' || constituency === constituencyFilter) &&
+                (wardFilter === 'all' || ward === wardFilter) &&
+                (partyDistrictFilter === 'all' || partyDistrict === partyDistrictFilter) &&
+                (partyBranchFilter === 'all' || partyBranch === partyBranchFilter) &&
+                (partyCellFilter === 'all' || partyCell === partyCellFilter)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
 
 </script>
 

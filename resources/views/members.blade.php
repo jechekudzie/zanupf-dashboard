@@ -148,7 +148,7 @@
                         <span class="logo-lg" style="font-size: 19px;
   font-weight: bolder;
   color: black;">
-                <img src="assets/images/logo-dark.png" alt="" height="24">ZANU PF
+                <img src="assets/images/logo-dark.png" alt="" height="35">
             </span>
                     </a>
                 </div>
